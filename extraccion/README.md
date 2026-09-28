@@ -1,0 +1,1 @@
+Colocar aquí `Fichas_lectura_review_v3.xlsx` (workbook maestro; la hoja `11_Tabla1_Review` es el instrumento de extracción de 22 campos) y, tras cada actualización, exportar la tabla plana a `tabla1_review.csv` para que los cambios sean visibles en los diffs de git.

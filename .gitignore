@@ -1,0 +1,12 @@
+# temporales de Office/LibreOffice
+~$*
+.~lock.*
+*.tmp
+# sistema
+.DS_Store
+Thumbs.db
+# python
+__pycache__/
+*.pyc
+.venv/
+# NO ignorar busqueda/exports/ ni capturas/: son evidencia del protocolo
