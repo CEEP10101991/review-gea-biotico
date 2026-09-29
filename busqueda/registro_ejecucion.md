@@ -33,10 +33,14 @@ Tras deduplicación:     326  (227 WoS+Scopus + 99 exclusivos de OpenAlex)
 Excluidos título/resumen: 299  (200 + 96 + 3 preprints por Enmienda 5; razones por registro en cribado/)
 A texto completo:        27
 Excluidos texto completo: 10  (razones por registro en cribado/decisiones_texto_completo_2026-09-28.csv)
-INCLUIDOS (corpus):      17
+INCLUIDOS (corpus):      18  (17 de bases + 1 por citation searching, Enmienda 6)
 ```
 
 Los 17 incluidos comprenden los 6 del barrido preliminar (declarados como conocimiento previo en el protocolo) + 11 nuevos: Sheppard 2022, Sheppard 2024, Pais 2020, Trumbo 2023, Smith 2019, Strickland 2023, Garroway 2013, Bellis 2020 (Enmienda 2), Vajana 2018 (Enmienda 2), Laccetti 2025 (Curr. Biol.) y Learmonth 2026 (Enmienda 3b). Laccetti 2025 (UFUG) quedó excluido a texto completo.
+
+## Búsqueda complementaria por referencias — citation searching (Enmienda 6, 29/09/2026)
+
+Cruce contra la base suplementaria de Dauphin et al. 2023 (mmc1; 278 estudios retenidos, 34 con variable biótica): 22 ya en nuestro universo; 12 evaluados con los criterios vigentes; 11 excluidos con razón (acta de la Enmienda 6); 1 a texto completo e **INCLUIDO**: Rosenthal et al. 2021 (10.1111/eva.13236; depredación medida como predictor, gupis de Hawai). Causa del no-hallazgo por cadenas: variante "environment association tests". **Corpus final: 18 estudios** (6 preliminares + 11 de bases + 1 por citation searching).
 
 ## Auditoría de correcciones/erratas del corpus
 

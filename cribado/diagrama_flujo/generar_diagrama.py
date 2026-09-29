@@ -29,9 +29,13 @@ ES = dict(
        ["•  sin GEA con predictor biótico medido", "    o modelado (n = 5)",
         "•  sin datos genómicos de descubrimiento", "    a escala genómica [Enmienda 3c] (n = 4)",
         "•  proxy de recurso sin identidad de", "    interactor [Enmienda 3d] (n = 1)"]),
-    I=("Estudios incluidos en la síntesis (n = 17)",
-       ["•  del barrido preliminar declarado en el protocolo (n = 6)", "•  nuevos de la búsqueda sistemática (n = 11)"]),
-    pie="Protocolo preinscrito (release v0.1-protocolo, commit 6f5d943) y enmiendas 1–5 en github.com/CEEP10101991/review-gea-biotico",
+    I=("Estudios incluidos en la síntesis (n = 18)",
+       ["•  del barrido preliminar declarado (n = 6)", "•  nuevos de las bases de datos (n = 11)", "•  por cruce de referencias [Enm. 6] (n = 1)"]),
+    R1=("Identificación por otros métodos", ["cruce de referencias sobre la base", "de Dauphin et al. 2023 (n = 34);", "ya presentes en las bases (n = 22)"]),
+    R2=("Evaluados con los criterios (n = 12)", []),
+    R3=("Excluidos, con razón (n = 11)", []),
+    R4=("A texto completo e incluidos (n = 1)", []),
+    pie="Protocolo preinscrito (release v0.1-protocolo, commit 6f5d943) y enmiendas 1–6 en github.com/CEEP10101991/review-gea-biotico",
     archivo="flujo_prisma_es",
 )
 
@@ -51,9 +55,13 @@ EN = dict(
        ["•  no GEA with a measured or modelled", "    biotic predictor (n = 5)",
         "•  no genome-scale discovery markers", "    [Amendment 3c] (n = 4)",
         "•  resource proxy without interactor", "    identity [Amendment 3d] (n = 1)"]),
-    I=("Studies included in the synthesis (n = 17)",
-       ["•  from the declared preliminary scoping (n = 6)", "•  new from the systematic search (n = 11)"]),
-    pie="Pre-registered protocol (release v0.1-protocolo, commit 6f5d943) and amendments 1–5 at github.com/CEEP10101991/review-gea-biotico",
+    I=("Studies included in the synthesis (n = 18)",
+       ["•  from the declared preliminary scoping (n = 6)", "•  new from the database searches (n = 11)", "•  via citation searching [Amendment 6] (n = 1)"]),
+    R1=("Identification via other methods", ["citation searching over the database", "of Dauphin et al. 2023 (n = 34);", "already in database records (n = 22)"]),
+    R2=("Assessed against criteria (n = 12)", []),
+    R3=("Excluded, with reasons (n = 11)", []),
+    R4=("Full text assessed and included (n = 1)", []),
+    pie="Pre-registered protocol (release v0.1-protocolo, commit 6f5d943) and amendments 1–6 at github.com/CEEP10101991/review-gea-biotico",
     archivo="flujo_prisma_en",
 )
 
@@ -76,17 +84,18 @@ def flecha(ax, x1, y1, x2, y2):
                                  shrinkA=0, shrinkB=1, zorder=2))
 
 def dibujar(T):
-    fig, ax = plt.subplots(figsize=(9.8, 8.2))
+    fig, ax = plt.subplots(figsize=(12.0, 8.2))
     ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis("off")
 
-    XL, WL = 0.085, 0.44          # columna principal
-    XR, WR = 0.575, 0.385         # columna de exclusiones
+    XL, WL = 0.068, 0.355         # columna principal
+    XR, WR = 0.452, 0.312         # columna de exclusiones
+    XC, WC = 0.782, 0.208          # columna de otros métodos (citation searching)
     # alturas de cajas (y = base)
     yA, hA = 0.835, 0.125
     yC, hC = 0.660, 0.062
     yE, hE = 0.525, 0.062
     yG, hG = 0.390, 0.062
-    yI, hI = 0.155, 0.095
+    yI, hI = 0.145, 0.110
     yB, hB = 0.862, 0.082
     yD, hD = 0.605, 0.148
     yF, hF = 0.525, 0.062
@@ -105,6 +114,21 @@ def dibujar(T):
     caja(ax, XL, yE, WL, hE, *T["E"]); caja(ax, XR, yF, WR, hF, *T["F"])
     caja(ax, XL, yG, WL, hG, *T["G"]); caja(ax, XR, yH, WR, hH, *T["H"])
     caja(ax, XL, yI, WL, hI, *T["I"])
+    yR1, hR1 = 0.845, 0.115
+    yR2, hR2 = 0.660, 0.062
+    yR3, hR3 = 0.525, 0.062
+    yR4, hR4 = 0.390, 0.062
+    caja(ax, XC, yR1, WC, hR1, *T["R1"], fs=6.6)
+    caja(ax, XC, yR2, WC, hR2, *T["R2"], fs=6.6)
+    caja(ax, XC, yR3, WC, hR3, *T["R3"], fs=6.6)
+    caja(ax, XC, yR4, WC, hR4, *T["R4"], fs=6.6)
+    cxc = XC + WC / 2
+    flecha(ax, cxc, yR1, cxc, yR2 + hR2)
+    flecha(ax, cxc, yR2, cxc, yR3 + hR3)
+    flecha(ax, cxc, yR3, cxc, yR4 + hR4)
+    # del brazo de referencias a Incluidos
+    flecha(ax, cxc, yR4, cxc, yI + hI / 2)
+    flecha(ax, cxc, yI + hI / 2, XL + WL, yI + hI / 2)
 
     cx = XL + WL / 2
     flecha(ax, cx, yA, cx, yC + hC)          # A -> C

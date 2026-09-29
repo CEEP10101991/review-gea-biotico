@@ -25,10 +25,18 @@ ELEGIBILIDAD
     Sin datos genómicos de descubrimiento (Enm. 3c):  4   (ids 82, 111, 137, 138)
     Proxy de recurso sin interactor (Enm. 3d):        1   (id 57, Mendes 2022)
 
+IDENTIFICACIÓN POR OTROS MÉTODOS (Enmienda 6)
+  Cruce de referencias (base de Dauphin et al. 2023): 34
+    Ya presentes en el universo de bases:             22
+    Evaluados con los criterios:                      12
+    Excluidos con razón:                              11
+    A texto completo e incluidos:                      1
+
 INCLUIDOS
-  Estudios incluidos en la síntesis:                 17
+  Estudios incluidos en la síntesis:                 18
     Del barrido preliminar (conocimiento previo):     6
-    Nuevos de la búsqueda sistemática:               11
+    Nuevos de las bases de datos:                    11
+    Por cruce de referencias (Rosenthal 2021):        1
     Aportados exclusivamente por OpenAlex:            0
 ```
 
