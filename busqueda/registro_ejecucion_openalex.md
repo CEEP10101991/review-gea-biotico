@@ -4,17 +4,19 @@ API `title_and_abstract.search`, cadena v2 sin comodines (stemming de OpenAlex; 
 
 | Consulta (sintaxis final) | Registros |
 |---|---|
-| `"landscape genomics" AND ("biotic interaction" OR pollinator OR herbivory OR frugivore OR "seed dispersal" OR microbiota OR pathogen OR disease OR predator)` | 90 |
-| `"landscape community genomics" AND ("biotic interaction" OR pollinator OR herbivory OR frugivore OR "seed dispersal" OR microbiota OR pathogen OR disease OR predator)` | 1 |
-| `"genotype-environment association" AND ("biotic interaction" OR pollinator OR herbivory OR frugivore OR "seed dispersal" OR microbiota OR pathogen OR disease OR predator)` | 31 |
-| `"genotype environment association" AND ("biotic interaction" OR pollinator OR herbivory OR frugivore OR "seed dispersal" OR microbiota OR pathogen OR disease OR predator)` | 31 |
-| `"genome-environment association" AND ("biotic interaction" OR pollinator OR herbivory OR frugivore OR "seed dispersal" OR microbiota OR pathogen OR disease OR predator)` | 11 |
-| `"genome-environmental analysis" AND ("biotic interaction" OR pollinator OR herbivory OR frugivore OR "seed dispersal" OR microbiota OR pathogen OR disease OR predator)` | 2 |
-| `"gene-environment association" AND ("biotic interaction" OR pollinator OR herbivory OR frugivore OR "seed dispersal" OR microbiota OR pathogen OR disease OR predator)` | 51 |
-| `"environmental association analysis" AND ("biotic interaction" OR pollinator OR herbivory OR frugivore OR "seed dispersal" OR microbiota OR pathogen OR disease OR predator)` | 12 |
+| `"landscape genomics" AND (biotic OR "biotic interaction" OR "species interaction" OR pollinator OR pollination OR herbivory OR herbivore OR frugivore OR frugivory OR "seed dispersal" OR microbiota OR microbiome OR microbial OR pathogen OR disease OR predator OR predation OR mutualism OR mutualist OR mutualistic OR parasite OR parasitism OR parasitic)` | 126 |
+| `"landscape community genomics" AND (biotic OR "biotic interaction" OR "species interaction" OR pollinator OR pollination OR herbivory OR herbivore OR frugivore OR frugivory OR "seed dispersal" OR microbiota OR microbiome OR microbial OR pathogen OR disease OR predator OR predation OR mutualism OR mutualist OR mutualistic OR parasite OR parasitism OR parasitic)` | 1 |
+| `"genotype-environment association" AND (biotic OR "biotic interaction" OR "species interaction" OR pollinator OR pollination OR herbivory OR herbivore OR frugivore OR frugivory OR "seed dispersal" OR microbiota OR microbiome OR microbial OR pathogen OR disease OR predator OR predation OR mutualism OR mutualist OR mutualistic OR parasite OR parasitism OR parasitic)` | 47 |
+| `"genotype environment association" AND (biotic OR "biotic interaction" OR "species interaction" OR pollinator OR pollination OR herbivory OR herbivore OR frugivore OR frugivory OR "seed dispersal" OR microbiota OR microbiome OR microbial OR pathogen OR disease OR predator OR predation OR mutualism OR mutualist OR mutualistic OR parasite OR parasitism OR parasitic)` | 47 |
+| `"genome-environment association" AND (biotic OR "biotic interaction" OR "species interaction" OR pollinator OR pollination OR herbivory OR herbivore OR frugivore OR frugivory OR "seed dispersal" OR microbiota OR microbiome OR microbial OR pathogen OR disease OR predator OR predation OR mutualism OR mutualist OR mutualistic OR parasite OR parasitism OR parasitic)` | 19 |
+| `"genome-environmental analysis" AND (biotic OR "biotic interaction" OR "species interaction" OR pollinator OR pollination OR herbivory OR herbivore OR frugivore OR frugivory OR "seed dispersal" OR microbiota OR microbiome OR microbial OR pathogen OR disease OR predator OR predation OR mutualism OR mutualist OR mutualistic OR parasite OR parasitism OR parasitic)` | 2 |
+| `"gene-environment association" AND (biotic OR "biotic interaction" OR "species interaction" OR pollinator OR pollination OR herbivory OR herbivore OR frugivore OR frugivory OR "seed dispersal" OR microbiota OR microbiome OR microbial OR pathogen OR disease OR predator OR predation OR mutualism OR mutualist OR mutualistic OR parasite OR parasitism OR parasitic)` | 56 |
+| `"environmental association analysis" AND (biotic OR "biotic interaction" OR "species interaction" OR pollinator OR pollination OR herbivory OR herbivore OR frugivore OR frugivory OR "seed dispersal" OR microbiota OR microbiome OR microbial OR pathogen OR disease OR predator OR predation OR mutualism OR mutualist OR mutualistic OR parasite OR parasitism OR parasitic)` | 14 |
 
-Unión deduplicada por ID de OpenAlex: **189** registros (`exports/openalex_2026-09-29.json`, `.csv`).
+**Diagnóstico por DOI de los 6 conocidos** (Enmienda 4): Frachon 2019: has_abstract=True; Frachon 2023: has_abstract=True; Roux 2023: has_abstract=True; Maillet 2025: has_abstract=True; Fraik 2020: has_abstract=True; Beer 2024: has_abstract=False
 
-**Chequeo de sensibilidad (6 conocidos): FALLÓ: faltan {'10.1093/molbev/msz078': 'Frachon 2019'}**
+Unión deduplicada por ID de OpenAlex: **253** registros (`exports/openalex_2026-09-29.json`, `.csv`).
+
+**Chequeo de sensibilidad (6 conocidos): PASÓ (6/6)**
 
 Pendiente: deduplicar contra los 227 de WoS+Scopus y cribar solo los registros nuevos.

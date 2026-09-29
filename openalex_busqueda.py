@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Búsqueda OpenAlex — protocolo review-gea-biotico, sección 4.3, con cadena v2 (Enmienda 1).
+Búsqueda OpenAlex — protocolo review-gea-biotico, sección 4.3, con cadena v2 (Enmienda 1) y bloque 2 v2 (Enmienda 4).
 Ejecutar DESDE la raíz del repo en copalera:  python3 openalex_busqueda.py
 Salidas (en busqueda/exports/ y busqueda/):
   - openalex_<fecha>.json  (unión de registros crudos, deduplicada por ID de OpenAlex)
@@ -30,8 +30,12 @@ BLOQUE1 = [
     '"environmental association analysis"',
 ]
 # Bloque 2 — acta sección 4.3 (consulta OpenAlex prefijada)
-BLOQUE2 = ('("biotic interaction" OR pollinator OR herbivory OR frugivore OR '
-           '"seed dispersal" OR microbiota OR pathogen OR disease OR predator)')
+# Bloque 2 v2 — Enmienda 4 (29/09/2026): alineado con WoS/Scopus, sin comodines
+BLOQUE2 = ('(biotic OR "biotic interaction" OR "species interaction" OR pollinator OR '
+           'pollination OR herbivory OR herbivore OR frugivore OR frugivory OR '
+           '"seed dispersal" OR microbiota OR microbiome OR microbial OR pathogen OR '
+           'disease OR predator OR predation OR mutualism OR mutualist OR mutualistic OR '
+           'parasite OR parasitism OR parasitic)')
 
 # Chequeo de sensibilidad prefijado: los 6 conocidos del barrido preliminar
 CONOCIDOS = {
@@ -103,6 +107,20 @@ with open(csv_path, "w", newline="") as f:
         w.writerow([wk["id"], doi, wk.get("title") or "", wk.get("publication_year") or "",
                     rev, auts, abstract_desde_indice(wk.get("abstract_inverted_index"))])
 
+# Diagnóstico por DOI (Enmienda 4): ¿tiene resumen indexado cada conocido?
+print("\nDiagnóstico de los 6 conocidos en OpenAlex:")
+diag = []
+for doi, nombre in CONOCIDOS.items():
+    try:
+        wk = get(f"https://api.openalex.org/works/doi:{doi}?mailto={MAILTO}")
+        tiene = bool(wk.get("abstract_inverted_index"))
+        diag.append((nombre, doi, tiene))
+        print(f"  {nombre}: en OpenAlex sí | has_abstract={tiene}")
+    except Exception as e:
+        diag.append((nombre, doi, None))
+        print(f"  {nombre}: no consultable ({e})")
+    time.sleep(0.2)
+
 # Sensibilidad
 dois_union = {(wk.get("doi") or "").replace("https://doi.org/", "").lower()
               for wk in union.values()}
@@ -117,6 +135,8 @@ with open("busqueda/registro_ejecucion_openalex.md", "w") as f:
             f"| Consulta (sintaxis final) | Registros |\n|---|---|\n")
     for expr, c in urls_ejecutadas:
         f.write(f"| `{expr}` | {c} |\n")
+    f.write("\n**Diagnóstico por DOI de los 6 conocidos** (Enmienda 4): " +
+            "; ".join(f"{n}: has_abstract={t}" for n, _, t in diag) + "\n")
     f.write(f"\nUnión deduplicada por ID de OpenAlex: **{len(union)}** registros "
             f"(`exports/openalex_{FECHA}.json`, `.csv`).\n\n"
             f"**Chequeo de sensibilidad (6 conocidos): {sens}**\n\n"
