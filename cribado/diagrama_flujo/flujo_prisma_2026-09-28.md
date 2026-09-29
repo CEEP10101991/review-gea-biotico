@@ -1,18 +1,22 @@
-# Diagrama de flujo (PRISMA 2020, versión texto) — 28 de septiembre de 2026
+# Diagrama de flujo (PRISMA 2020, versión texto) — actualizado 29/09/2026 (tres bases)
 
-Versión gráfica pendiente (generar para el manuscrito). Números auditables contra los archivos de `busqueda/` y `cribado/`.
+Versión gráfica pendiente. Números auditables contra `busqueda/` y `cribado/`.
 
 ```
 IDENTIFICACIÓN
-  Registros identificados en bases de datos:        391
+  Registros identificados en bases de datos:        644
     Web of Science (Core Collection):               194
     Scopus:                                         197
-    OpenAlex:                                 PENDIENTE
-  Registros eliminados por duplicación:             164
+    OpenAlex (corrida definitiva, Enmienda 4):      253
+  Registros eliminados por duplicación:             318
+    (164 dentro de WoS+Scopus; 154 de OpenAlex ya presentes en WoS+Scopus)
 
 CRIBADO
-  Registros cribados (título/resumen):              227
-  Registros excluidos:                              200
+  Registros cribados (título/resumen):              326  (227 WoS+Scopus + 99 exclusivos de OpenAlex)
+  Registros excluidos:                              299
+    Cribado WoS+Scopus (28/09):                     200
+    Cribado OpenAlex (29/09):                        96
+    Preprints elegibles excluidos por regla (Enm. 5): 3
 
 ELEGIBILIDAD
   Informes evaluados a texto completo:               27
@@ -25,6 +29,7 @@ INCLUIDOS
   Estudios incluidos en la síntesis:                 17
     Del barrido preliminar (conocimiento previo):     6
     Nuevos de la búsqueda sistemática:               11
+    Aportados exclusivamente por OpenAlex:            0
 ```
 
-Nota de transparencia: los 6 estudios del barrido preliminar se declararon en el protocolo (chequeo de sensibilidad) antes de ejecutar la búsqueda; los 17 fueron recuperados por la cadena v2. Las enmiendas 2 y 3 (criterios decididos tras leer casos límite) están documentadas en `protocolo/enmiendas/` y deben reportarse en la sección de métodos del manuscrito.
+Notas de transparencia: los 6 del barrido preliminar se declararon en el protocolo antes de ejecutar; el chequeo de sensibilidad combinado pasó 6/6 en las tres bases (OpenAlex requirió la Enmienda 4). Los 3 preprints elegibles a nivel resumen quedan fuera por la regla de la Enmienda 5 y se citan como evidencia emergente.

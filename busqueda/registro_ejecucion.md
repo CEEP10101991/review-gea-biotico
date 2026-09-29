@@ -23,15 +23,15 @@ Incidencia Scopus: error `RequestHeaderSectionTooLarge` vía pbidi; resuelto eje
 
 **Chequeo de sensibilidad: PASÓ (6/6).** Los seis estudios conocidos del barrido preliminar fueron recuperados (ids 19, 45, 46, 69, 98, 134 en `cribado/dedup_iter2.csv`).
 
-**OpenAlex (tercera base): PENDIENTE.** El piloto por API falló por límite de tasa (HTTP 429) y una URL demasiado larga (403) a través del proxy institucional. Queda como tarea: exportar vía interfaz web o reintentar API sin proxy, y correr la misma deduplicación contra los 227.
+**OpenAlex (tercera base): EJECUTADA (29/09/2026, desde copalera).** El piloto del 28/09 por proxy institucional falló (429/403); la ejecución definitiva corrió por API con polite pool. Corrida 1 (bloque 2 del acta 4.3): 189 registros, sensibilidad por base FALLÓ (Frachon 2019) → diagnóstico contra el PDF: el bloque 2 de OpenAlex estaba descalibrado respecto de WoS/Scopus (frase "biotic interaction" en lugar del término suelto `biotic`, sin "species interaction"/mutualis*/parasit*) → **Enmienda 4** (bloque 2 v2 alineado, sin comodines, con diagnóstico por DOI). Corrida definitiva: **253 registros**, sensibilidad **PASÓ (6/6)**; los 6 conocidos están en OpenAlex, 5 con resumen indexado (Beer 2024 sin resumen: `has_abstract=False`, recuperado por título). Detalle por consulta en `registro_ejecucion_openalex.md`. Deduplicación contra los 227: **99 exclusivos de OpenAlex**, cribados el 29/09 (`cribado/decisiones_titulo_resumen_openalex_2026-09-29.csv`): 96 EXCLUIR + 3 preprints elegibles a nivel resumen, excluidos por la regla de la **Enmienda 5** (solo estudios arbitrados; los preprints se citan como evidencia emergente). **Aporte neto de OpenAlex al corpus: 0. Corpus final: 17.**
 
 ## Flujo (números finales, iteración 2)
 
 ```
-Identificados:          391  (WoS 194 + Scopus 197)
-Tras deduplicación:     227  (164 duplicados; DOI y título normalizado — cribado/scripts/dedup.py)
-Excluidos título/resumen: 200  (razones por registro en cribado/decisiones_titulo_resumen_2026-09-28.csv)
-A texto completo:        27  (17 INCLUIR-TC + 10 DUDOSO-TC)
+Identificados:          644  (WoS 194 + Scopus 197 + OpenAlex 253)
+Tras deduplicación:     326  (227 WoS+Scopus + 99 exclusivos de OpenAlex)
+Excluidos título/resumen: 299  (200 + 96 + 3 preprints por Enmienda 5; razones por registro en cribado/)
+A texto completo:        27
 Excluidos texto completo: 10  (razones por registro en cribado/decisiones_texto_completo_2026-09-28.csv)
 INCLUIDOS (corpus):      17
 ```
