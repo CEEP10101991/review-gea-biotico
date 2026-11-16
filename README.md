@@ -39,10 +39,6 @@ cronograma.md         Plan de trabajo R1–R9
 - El manuscrito no cita cifras del caso *Bursera* fuera del estado auditado (traspaso 01/09/2026).
 - Cada sesión de trabajo cierra con nota de estado en `actas_sesion/`.
 
-## Licencia
-
-Por definir antes de publicar el repo (sugerencia: CC-BY 4.0 para textos y datos de cribado; MIT para scripts).
-
 ## Cómo citar el protocolo
 
 > Escalona Prado, C.E. (2026). Protocolo preinscrito de búsqueda sistemática: interacciones bióticas como predictores en GEA. Repositorio GitHub [URL], commit [hash], release v0.1-protocolo.
